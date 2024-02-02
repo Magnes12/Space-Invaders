@@ -1,7 +1,7 @@
 import turtle
 import time
 from spaceship import SpaceShip
-from enemies import Enemies
+from enemy import Enemy
 
 enemy_shape = turtle.register_shape('enemy.gif')
 
@@ -20,7 +20,7 @@ def main():
 
     space_ship = SpaceShip(ship_shape)
 
-    enemies_inst = Enemies(-175, 275, enemy_shape)
+    enemies_inst = Enemy(-175, 275, enemy_shape)
     enemies = enemies_inst.enemies_create(enemy_shape)
 
     screen.listen()

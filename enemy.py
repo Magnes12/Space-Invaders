@@ -2,7 +2,7 @@ import turtle
 import time
 
 
-class Enemies(turtle.Turtle):
+class Enemy(turtle.Turtle):
 
     def __init__(self, x, y, shape):
         super().__init__()
@@ -18,7 +18,7 @@ class Enemies(turtle.Turtle):
 
         for row in range(6):
             for col in range(6):
-                enemy = Enemies(-175 + col * enemies_spacing_x, 275 - row * enemies_spacing_y, shape)
+                enemy = Enemy(-175 + col * enemies_spacing_x, 275 - row * enemies_spacing_y, shape)
                 enemies.append(enemy)
 
         return enemies
