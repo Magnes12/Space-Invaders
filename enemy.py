@@ -9,10 +9,6 @@ class Enemy(turtle.Turtle):
         self.penup()
         self.goto(x, y)
 
-    def move(self):
-        new_x = self.xcor() + self.dx
-        self.goto(new_x, self.ycor())
-
     def enemies_create(self, shape):
         enemies = []
         enemies_spacing_x = 70
