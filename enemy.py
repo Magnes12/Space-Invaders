@@ -1,5 +1,4 @@
 import turtle
-import time
 
 
 class Enemy(turtle.Turtle):
@@ -8,8 +7,11 @@ class Enemy(turtle.Turtle):
         super().__init__()
         self.shape(shape)
         self.penup()
-        self.turtlesize(stretch_wid=0.5, stretch_len=0.5)
         self.goto(x, y)
+
+    def move(self):
+        new_x = self.xcor() + self.dx
+        self.goto(new_x, self.ycor())
 
     def enemies_create(self, shape):
         enemies = []
@@ -22,3 +24,6 @@ class Enemy(turtle.Turtle):
                 enemies.append(enemy)
 
         return enemies
+
+    def remove(self):
+        self.goto(1000, 1000)

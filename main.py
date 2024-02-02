@@ -1,9 +1,6 @@
 import turtle
-import time
 from spaceship import SpaceShip
 from enemy import Enemy
-
-enemy_shape = turtle.register_shape('enemy.gif')
 
 
 def main():
@@ -23,11 +20,34 @@ def main():
     enemies_inst = Enemy(-175, 275, enemy_shape)
     enemies = enemies_inst.enemies_create(enemy_shape)
 
+    bullets = []
+
     screen.listen()
     screen.onkey(space_ship.move_l, "a")
     screen.onkey(space_ship.move_r, "d")
+    screen.onkey(lambda: bullets.append(space_ship.shot()), "space")
+
+    def remove_bullet():
+        bullet.hideturtle()
+        bullets.remove(bullet)
 
     while True:
+        for bullet in bullets:
+            bullet.sety(bullet.ycor() + 5)
+            if bullet.ycor() > 275:
+                remove_bullet()
+
+            enemy_to_remove = []
+
+            for enemy in enemies:
+                if bullet.distance(enemy) < 20:
+                    remove_bullet()
+                    enemy.remove()
+                    enemy_to_remove.append(enemy)
+
+            for enemy in enemy_to_remove:
+                enemy_to_remove.remove(enemy)
+
         screen.update()
 
 
